@@ -18,3 +18,4 @@ pip install pyautogui
 pip install openpyxl
 pip install opencv-python
 ```
+**Obs: Caso a instalção apresente algum erro, adicione a flag '--user' antes do package name**
