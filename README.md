@@ -2,7 +2,7 @@
 
 # Automação para atualização da geração das Usinas da Criativa energia
 
-Repositório do app construído por [Igor](https://github.com/igor-devloper)!para a  [Empresa Criativa Energia]()! :brazil:
+Repositório do app construído por [Igor](https://github.com/igor-devloper) para a  [Empresa Criativa Energia]()! :brazil:
 
 ## Executando o projeto
 
