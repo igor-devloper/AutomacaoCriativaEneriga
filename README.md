@@ -16,4 +16,5 @@ cd AutomacaoCriativaEneriga
 pip install selenium
 pip install pyautogui
 pip install openpyxl
+pip install opencv-python
 ```
