@@ -210,7 +210,7 @@ class Scrappy:
             geracao.cell(column=3, row=index, value=geracaoDiaria2)
             geracao.cell(column=5, row=index, value=f'{self.dataStr}, {hora}')
             index += 1 
-        planilha.save(filename=f'{hora}.xlsx')
+        planilha.save('Criativa.xlsx')
         print('\033[32m'+'Planilha criada com sucesso☀️🚩------------------------------------------100%😜'+'\033[0;0m') 
         pi.alert("O PROCESSO DE ATUALIZAÇÃO TERMINOU ☀️🚩😜!! A PLANILHA ESTÁ NA MESMA PASTA DO AQUIVO DO CODIGO 😜🧧✅")
 
