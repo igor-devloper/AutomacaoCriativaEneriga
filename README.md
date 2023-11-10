@@ -1,4 +1,8 @@
-![image](https://cdn.discordapp.com/attachments/793229166962802719/1172265711939354664/LogoCriativaHorizontal.jpg?ex=655fb085&is=654d3b85&hm=209229a2b574800357ddaa3c298b24a72e43172163b9ee2cacb98d5f6edb5585&)
+<div align="center" width=500>
+  <img src="https://github.com/igor-devloper/AutomacaoCriativaEneriga/assets/92065382/f80650db-9579-4561-8b70-a77d343ae9ad" alt="drawing" width="700"/>
+
+</div>
+
 
 # Automação para atualização da geração das Usinas da Criativa energia
 
