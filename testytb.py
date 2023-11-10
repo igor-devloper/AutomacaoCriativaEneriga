@@ -72,7 +72,6 @@ class Scrappy:
                 self.listaLocCa.append(lista_localizacao[0].get_attribute('innerHTML'))
                 lista_geracao = self.driver.find_element(By.XPATH , f'/html/body/div[1]/div[5]/div[2]/section/div/div[5]/div[2]/div[1]/div[1]/div[3]/div[1]/div/div[2]/div[1]/div/table/tbody/tr[{value}]/td[4]')
                 self.listaGeracaoCa.append(lista_geracao.get_attribute('innerHTML'))
-                print(self.listaGeracaoCa)
                 lista_end = self.driver.find_element(By.XPATH, f'/html/body/div[1]/div[5]/div[2]/section/div/div[5]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div/table/tbody/tr[{value}]/td[2]/div[2]')
                 self.listaEndCa.append(lista_end.get_attribute('title'))
                 lista_clima =  self.driver.find_element(By.XPATH, f'//*[@id="mCSB_42_container"]/table/tbody/tr[{value}]/td[9]')
@@ -151,7 +150,7 @@ class Scrappy:
     
 
     def criarPlanilha(self):
-        listaTratada = list(map(lambda x: x.replace('.', ','), self.listaGeracaoCa)) 
+        listaTratada =  list(map(lambda x: x.replace('.', ','), self.listaGeracaoCa))
         listaTratada1 = list(map(lambda x: x.replace('.', ',').replace('kWh', ''), self.listaGeracaoPHB))
         listaTratada2 = list(map(lambda x: x.replace('.', ',').replace('kWh', ''), self.listaGeracaoSolis))
         # for clima in self.listaClimaCa:
@@ -168,7 +167,6 @@ class Scrappy:
         self.dataStr = data.strftime("%d/%m/%Y")
         hora = self.driver.find_element(By.XPATH, '//*[@id="rso"]/div[1]/div/div/div/div/div/div[1]').get_attribute('innerHTML')
         localizacao = self.listaLocCa
-        geracaoDiaria = self.listaGeracaoCa
         planilha = openpyxl.Workbook()
         geracao = planilha['Sheet']
         geracao.title = 'Usinas Criativa Energia'
@@ -176,25 +174,24 @@ class Scrappy:
         geracao['B1'] = 'Endereço'
         geracao['C1'] = 'Geração Diaria'
         geracao['D1'] = 'Clima'
-        geracao['E1'] = 'Tempo'
-        geracao['F1'] = 'Data/Hora'
-        img = 'https://github.com/igor-devloper.png'
-       
+        geracao['E1'] = 'Data/Hora'
         index = 2
-        for localizacao, geracaoDiaria, end, clima in zip(
-            self.listaLocCa, listaTratada, self.listaEndCa, self.listaClimaCa):
-            formula = f'=IMAGEM(5{index}'
+        
+        for localizacao, geracaoDiaria, end in zip(
+            self.listaLocCa, listaTratada, self.listaEndCa):
             time.sleep(1)
             geracao.cell(column=1, row=index, value=localizacao)
             geracao.cell(column=2, row=index,  value=end)
-            geracao.cell(column=3, row=index, value=f'=VALOR({geracaoDiaria})')
-            geracao.cell(column=4, row=index, value=f'{img} {clima}')
-            geracao.cell(column=5, row=index, value=formula)
-            geracao.cell(column=6, row=index, value=f'{self.dataStr}, {hora}')
+            element = ","
+            GerTratada = geracaoDiaria.index(element)
+            print(geracaoDiaria[0: GerTratada])
+            geracao.cell(column=3, row=index).value= fr"=VALOR({geracaoDiaria[0:GerTratada]}"
+            geracao.cell(column=4, row=index).value=r'=IMAGEM("https://static.semsportal.com/static/Images/icon-weather-new/101.png";"CLIMA")'
+            geracao.cell(column=5, row=index, value=f'{self.dataStr}, {hora}')
             index += 1
-        index = 18
+        index = 18                    
         print('\033[32m'+'Planilha ----------- 33,33% '+'\033[0;0m') 
-        time.sleep(3)
+        
         for localizacao1, geracaoDiaria1, end in zip(self.listaLocPHB, listaTratada1, self.listaEndPHB):
             geracao.cell(column=1, row=index, value=localizacao1)
             geracao.cell(column=2, row=index,  value=end)
@@ -202,14 +199,20 @@ class Scrappy:
             geracao.cell(column=5, row=index, value=f'{self.dataStr}, {hora}')
             index +=1   
         index = 27
+        
+        
         print('\033[32m'+'Planilha ----------------- 33,33% '+'\033[0;0m') 
         time.sleep(3)
+        
+        
         for localizacao2, geracaoDiaria2, end in zip(self.listaLocSolis, listaTratada2, self.listaEndSolis): 
             geracao.cell(column=1, row=index, value=localizacao2)
             geracao.cell(column=2, row=index,  value=end)
             geracao.cell(column=3, row=index, value=geracaoDiaria2)
             geracao.cell(column=5, row=index, value=f'{self.dataStr}, {hora}')
             index += 1 
+            
+        
         planilha.save('Criativa.xlsx')
         print('\033[32m'+'Planilha criada com sucesso☀️🚩------------------------------------------100%😜'+'\033[0;0m') 
         pi.alert("O PROCESSO DE ATUALIZAÇÃO TERMINOU ☀️🚩😜!! A PLANILHA ESTÁ NA MESMA PASTA DO AQUIVO DO CODIGO 😜🧧✅")
