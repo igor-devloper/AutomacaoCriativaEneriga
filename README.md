@@ -6,20 +6,25 @@
 
 # Automação para atualização da geração das Usinas da Criativa energia
 
-Repositório do app construído por [Igor](https://github.com/igor-devloper) para a  [Empresa Criativa Energia]()! :brazil:
+Repositório do app construído por [Igor](https://github.com/igor-devloper) para a  [Empresa Criativa Energia]()!Com o objetivo de criar uma base de codigo para consumir dados de sites de acordo com seus HTML'S :brazil:
 
 ## Executando o projeto
 
 Abaixo seguem as instruções para você executar o projeto na sua máquina.
 
-Comece clonando o repositório e instalando suas dependências:
+Comece clonando o repositório:
 
 ```sh
 git clone https://github.com/igor-devloper/AutomacaoCriativaEneriga
 cd AutomacaoCriativaEneriga
+```
+
+Logo após instale as dependências:
+```sh
 pip install selenium
 pip install pyautogui
 pip install openpyxl
 pip install opencv-python
 ```
+
 **Obs: Caso a instalção apresente algum erro, adicione a flag '--user' antes do package name**
