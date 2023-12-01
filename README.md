@@ -12,14 +12,19 @@ Repositório do app construído por [Igor](https://github.com/igor-devloper) par
 
 Abaixo seguem as instruções para você executar o projeto na sua máquina.
 
-Comece clonando o repositório e instalando suas dependências:
+Comece clonando o repositório:
 
 ```sh
 git clone https://github.com/igor-devloper/AutomacaoCriativaEneriga
 cd AutomacaoCriativaEneriga
+```
+
+Logo após instale as dependências:
+```sh
 pip install selenium
 pip install pyautogui
 pip install openpyxl
 pip install opencv-python
 ```
+
 **Obs: Caso a instalção apresente algum erro, adicione a flag '--user' antes do package name**
