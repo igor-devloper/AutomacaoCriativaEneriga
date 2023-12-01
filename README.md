@@ -6,7 +6,7 @@
 
 # Automação para atualização da geração das Usinas da Criativa energia
 
-Repositório do app construído por [Igor](https://github.com/igor-devloper) para a  [Empresa Criativa Energia]()!Com o objetivo de criar uma base de codigo para consumir dados de sites de acordo com seus HTML'S :brazil:
+Repositório do app construído por [Igor](https://github.com/igor-devloper) para a  [Empresa Criativa Energia]()! Com o objetivo de criar uma base de codigo para consumir dados de sites de acordo com seus HTML'S :brazil:
 
 ## Executando o projeto
 
